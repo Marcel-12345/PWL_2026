@@ -13,49 +13,48 @@ use App\Http\Controllers\PhotoController;
 // return 'Hello World';
 //});
 
-Route::get('/hello', [WelcomeController::class,'hello']);
+Route::get('/hello', [WelcomeController::class, 'hello']);
 
 Route::get('/world', function () {
- return 'World';
+    return 'World';
 });
 
 //Route::get('/', function () {
 // return 'Selamat Datang';
 //});
 
-Route::get('/', [PageController::class,'index']);
+Route::get('/', [PageController::class, 'index']);
 
 //Route::get('/about', function () {
 // return 'NIM: 244107040141 | Nama: Anselmus Marcel Putra Andria';
 //});
 
-Route::get('/about', [PageController::class,'about']);
+Route::get('/about', [PageController::class, 'about']);
 
 Route::get('/user/{name}', function ($name) {
-return 'Nama saya '.$name;
+    return 'Nama saya ' . $name;
 });
 
-Route::get('/posts/{post}/comments/{comment}', function
-($postId, $commentId) {
- return 'Pos ke-'.$postId." Komentar ke-: ".$commentId;
+Route::get('/posts/{post}/comments/{comment}', function ($postId, $commentId) {
+    return 'Pos ke-' . $postId . " Komentar ke-: " . $commentId;
 });
 
 // Route::get('/articles/{id}', function ($id) {
 // return 'Halaman Artikel dengan ID '.$id;
 // });
 
-Route::get('/articles/{id}', [PageController::class,'articles']);
+Route::get('/articles/{id}', [PageController::class, 'articles']);
 
-Route::get('/user/{name?}', function ($name='John') {
-    return 'Nama saya '.$name;
+Route::get('/user/{name?}', function ($name = 'John') {
+    return 'Nama saya ' . $name;
 });
 
 Route::get('/user/profile', function () {
- //
+    //
 })->name('profile');
 Route::get(
- '/user/profile',
- [UserProfileController::class, 'show']
+    '/user/profile',
+    [UserProfileController::class, 'show']
 )->name('profile');
 // // Generating URLs...
 // $url = route('profile');
@@ -93,10 +92,22 @@ Route::get(
 // Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
 
 Route::resource('photos', PhotoController::class)->only([
- 'index', 'show'
+    'index',
+    'show'
 ]);
 
-//Route::resource('photos', PhotoController::class)->except([
-// 'create', 'store', 'update', 'destroy'
-//]);
+    //Route::resource('photos', PhotoController::class)->except([
+    // 'create', 'store', 'update', 'destroy'
+    //]);
 ;
+
+//Route::get('/greeting', function () {
+//    return view('hello', ['name' => 'Marcel']);
+//});
+
+//Route::get('/greeting', function () { 
+//return view('blog.hello', ['name' => 'Marcel']); 
+//});
+
+Route::get('/greeting', [WelcomeController::class, 
+'greeting']); 
