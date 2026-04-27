@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index()
+    /* public function index()
     {
         $data = [
             'level_id' => 2,
@@ -18,5 +18,10 @@ class UserController extends Controller
         UserModel::create($data);
         $user = UserModel::all();
         return view('user', ['data' => $user]);
+    } */
+    
+       public function profile($id, $name)
+    {
+        return view('user.profile', compact('id', 'name'));
     }
 }
